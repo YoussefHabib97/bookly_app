@@ -20,7 +20,8 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/
+    - assets/images/
+    - assets/fonts/
   fonts:
     - family: 'GT Sectra Fine'
       fonts:
