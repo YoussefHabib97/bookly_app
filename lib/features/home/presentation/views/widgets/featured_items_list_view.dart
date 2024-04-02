@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/featured_item_list_tile.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_tile.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
@@ -12,7 +12,7 @@ class FeaturedBooksListView extends StatelessWidget {
         separatorBuilder: (context, index) => const SizedBox(width: 16),
         scrollDirection: Axis.horizontal,
         itemCount: 5,
-        itemBuilder: (context, index) => const FeaturedItemListTile(),
+        itemBuilder: (context, index) => const CustomBookTile(),
       ),
     );
   }

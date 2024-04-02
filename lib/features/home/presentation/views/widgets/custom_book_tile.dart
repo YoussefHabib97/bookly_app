@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 
-class FeaturedItemListTile extends StatelessWidget {
-  const FeaturedItemListTile({
+class CustomBookTile extends StatelessWidget {
+  const CustomBookTile({
     super.key,
   });
 
