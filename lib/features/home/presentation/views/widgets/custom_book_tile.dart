@@ -9,7 +9,7 @@ class CustomBookTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 2 / 3,
+      aspectRatio: 3 / 4,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.red,
