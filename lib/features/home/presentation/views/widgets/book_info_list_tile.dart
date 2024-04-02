@@ -6,8 +6,8 @@ import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating_widget.dart';
 
-class BookListTile extends StatelessWidget {
-  const BookListTile({super.key});
+class BookInfoListTile extends StatelessWidget {
+  const BookInfoListTile({super.key});
 
   @override
   Widget build(BuildContext context) {

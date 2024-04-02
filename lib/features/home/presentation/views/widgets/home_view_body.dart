@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/latest_book_list_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/featured_items_list_view.dart';
 
@@ -32,7 +32,7 @@ class HomeViewBody extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                 child: Text(
-                  'Best Seller',
+                  'Latest Books',
                   style: Styles.textStyle18,
                 ),
               ),
@@ -40,7 +40,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        BestSellerListView(),
+        LatestBooksListView(),
       ],
     );
   }
