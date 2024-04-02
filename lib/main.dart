@@ -4,11 +4,11 @@ import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const BooklyApp());
+  runApp(const ApplicationRoot());
 }
 
-class BooklyApp extends StatelessWidget {
-  const BooklyApp({super.key});
+class ApplicationRoot extends StatelessWidget {
+  const ApplicationRoot({super.key});
 
   @override
   Widget build(BuildContext context) {
