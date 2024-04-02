@@ -45,7 +45,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         //   transition: Transition.fadeIn,
         //   () => const HomeView(),
         // );
-        GoRouter.of(context).push('/homeView');
+        GoRouter.of(context).replace('/homeView');
       },
     );
   }
