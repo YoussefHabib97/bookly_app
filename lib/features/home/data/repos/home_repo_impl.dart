@@ -50,7 +50,6 @@ class HomeRepositoryImplementation implements HomeRepository {
         return left(ServerFailure.fromDioException(e));
       }
       return left(ServerFailure(e.toString()));
-    } // TODO: implement fetchFeaturedBooks
-    throw UnimplementedError();
+    }
   }
 }
