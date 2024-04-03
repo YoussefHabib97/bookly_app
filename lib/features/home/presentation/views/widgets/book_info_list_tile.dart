@@ -18,14 +18,18 @@ class BookInfoListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(
+          AppRouter.kBookDetailsView,
+          extra: bookModel,
+        );
       },
       child: SizedBox(
         height: 125,
         child: Row(
           children: [
             CustomBookTile(
-                imgUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? ''),
+              imgUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
+            ),
             const SizedBox(width: 30),
             Expanded(
               child: Column(
