@@ -3,7 +3,9 @@ import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 
 abstract class HomeRepository {
-  Future<Either<Failure, List<BookModel>>> fetchLatestBooks();
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
-  // Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks({required String subject});
+  Future<Either<Failure, List<BookModel>>> fetchLatestBooks();
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({
+    required String category,
+  });
 }
