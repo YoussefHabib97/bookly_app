@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bookly_app/features/search/data/repos/search_repo.dart';
@@ -19,4 +20,7 @@ class SearchCubit extends Cubit<SearchState> {
       (books) => emit(SearchSuccess(books)),
     );
   }
+
+  final TextEditingController searchTextFieldController =
+      TextEditingController();
 }

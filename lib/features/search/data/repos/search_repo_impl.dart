@@ -22,7 +22,6 @@ class SearchRepositoryImplementation implements SearchRepository {
       for (var book in data['items']) {
         booksList.add(BookModel.fromJson(book));
       }
-      print(booksList);
       return right([...booksList]);
     } catch (e) {
       if (e is DioException) {

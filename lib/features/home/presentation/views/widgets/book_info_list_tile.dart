@@ -28,7 +28,8 @@ class BookInfoListTile extends StatelessWidget {
         child: Row(
           children: [
             CustomBookTile(
-              imgUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
+              imgUrl: bookModel.volumeInfo.imageLinks?.thumbnail ??
+                  'https://i.imgur.com/aExjgFB.jpeg',
             ),
             const SizedBox(width: 30),
             Expanded(
@@ -58,6 +59,8 @@ class BookInfoListTile extends StatelessWidget {
                     children: [
                       Text(
                         "Free",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),

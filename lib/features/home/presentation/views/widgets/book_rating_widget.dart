@@ -20,7 +20,7 @@ class BookRatingWidget extends StatelessWidget {
         if (ratingCount != null) ...[
           const FaIcon(
             FontAwesomeIcons.solidStar,
-            size: 18,
+            size: 16,
             color: Color(0xFFFFDD4F),
           ),
           const SizedBox(width: 6.3),
