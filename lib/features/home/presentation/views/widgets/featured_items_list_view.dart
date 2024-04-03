@@ -16,10 +16,13 @@ class FeaturedBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.3,
             child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
               separatorBuilder: (context, index) => const SizedBox(width: 16),
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (context, index) => const CustomBookTile(),
+              itemCount: state.books.length,
+              itemBuilder: (context, index) => CustomBookTile(
+                imgUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
+              ),
             ),
           );
         } else if (state is FeaturedBooksFailure) {

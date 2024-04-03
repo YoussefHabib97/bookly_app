@@ -12,7 +12,9 @@ class SimilarBooksListView extends StatelessWidget {
         separatorBuilder: (context, index) => const SizedBox(width: 16),
         scrollDirection: Axis.horizontal,
         itemCount: 5,
-        itemBuilder: (context, index) => const CustomBookTile(),
+        itemBuilder: (context, index) => const CustomBookTile(
+          imgUrl: 'https://i.imgur.com/Mc7mXc6.jpeg',
+        ),
       ),
     );
   }
