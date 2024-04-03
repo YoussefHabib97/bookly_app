@@ -24,22 +24,21 @@ class ServerFailure extends Failure {
 
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioException.response!.statusCode!, dioException.response);
+            dioException.response!.statusCode!, dioException.response!.data);
       case DioExceptionType.cancel:
         return ServerFailure('Request cancelled');
 
       case DioExceptionType.connectionError:
-        if (dioException.message!.contains('socket exception')) {
-          return ServerFailure('No internet connection');
-        }
+        return ServerFailure('No internet connection');
+
       case DioExceptionType.unknown:
-        return ServerFailure('Unexpected error.\nPlease try again later.');
+        return ServerFailure(
+            'An unknown error has occured.\nPlease try again later.');
 
       default:
         return ServerFailure(
             'Oops! There was an error.\nPlease try again later.');
     }
-    return ServerFailure('Oops! There was an error.\nPlease try again later.');
   }
 
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
