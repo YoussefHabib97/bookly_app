@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:bookly_app/core/errors/failures.dart';
@@ -38,16 +36,12 @@ class HomeRepositoryImplementation implements HomeRepository {
     try {
       var data = await apiService.get(
           endPoint:
-              'volumes?Filtering=free-ebooks&q=subject:self+improvement&sorting=newest');
+              'volumes?Filtering=free-ebooks&q=subject:programming&sorting=newest');
 
       List<BookModel> booksList = [];
 
       for (var book in data['items']) {
-        try {
-          booksList.add(BookModel.fromJson(book));
-        } catch (e) {
-          booksList.add(BookModel.fromJson(book));
-        }
+        booksList.add(BookModel.fromJson(book));
       }
 
       return right([...booksList]);

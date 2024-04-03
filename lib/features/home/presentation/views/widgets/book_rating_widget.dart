@@ -14,10 +14,10 @@ class BookRatingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (ratingCount != null) {
-      return Row(
-        mainAxisAlignment: mainAxisAlignment,
-        children: [
+    return Row(
+      mainAxisAlignment: mainAxisAlignment,
+      children: [
+        if (ratingCount != null) ...[
           const FaIcon(
             FontAwesomeIcons.solidStar,
             size: 18,
@@ -36,16 +36,9 @@ class BookRatingWidget extends StatelessWidget {
               style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
             ),
           ),
-        ],
-      );
-    }
-    return Row(
-      mainAxisAlignment: mainAxisAlignment,
-      children: const [
-        Text(
-          'Not yet rated',
-          style: Styles.textStyle16,
-        ),
+        ] else ...[
+          const Text("Not yet rated"),
+        ]
       ],
     );
   }

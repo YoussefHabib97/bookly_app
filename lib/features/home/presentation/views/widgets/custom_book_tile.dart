@@ -18,7 +18,7 @@ class CustomBookTile extends StatelessWidget {
           imageUrl: imgUrl,
           errorWidget: (context, url, error) => const Icon(
             Icons.error,
-            color: Colors.red,
+            color: Colors.white,
           ),
           fit: BoxFit.fill,
         ),
