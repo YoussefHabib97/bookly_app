@@ -21,7 +21,8 @@ class FeaturedBooksListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: state.books.length,
               itemBuilder: (context, index) => CustomBookTile(
-                imgUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
+                imgUrl:
+                    state.books[index].volumeInfo.imageLinks?.thumbnail ?? '',
               ),
             ),
           );

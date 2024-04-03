@@ -24,7 +24,8 @@ class BookInfoListTile extends StatelessWidget {
         height: 125,
         child: Row(
           children: [
-            CustomBookTile(imgUrl: bookModel.volumeInfo.imageLinks.thumbnail),
+            CustomBookTile(
+                imgUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? ''),
             const SizedBox(width: 30),
             Expanded(
               child: Column(

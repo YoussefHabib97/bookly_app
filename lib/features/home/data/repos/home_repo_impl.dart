@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:bookly_app/core/errors/failures.dart';
@@ -11,11 +13,10 @@ class HomeRepositoryImplementation implements HomeRepository {
   HomeRepositoryImplementation(this.apiService);
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchLatestBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-          endPoint:
-              'volumes?Filtering=free-ebooks&q=subject:programming&sorting=newest');
+          endPoint: 'volumes?Filtering=free-ebooks&q=subject:computer+science');
 
       List<BookModel> booksList = [];
 
@@ -33,15 +34,20 @@ class HomeRepositoryImplementation implements HomeRepository {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchLatestBooks() async {
     try {
       var data = await apiService.get(
-          endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming');
+          endPoint:
+              'volumes?Filtering=free-ebooks&q=subject:self+improvement&sorting=newest');
 
       List<BookModel> booksList = [];
 
       for (var book in data['items']) {
-        booksList.add(BookModel.fromJson(book));
+        try {
+          booksList.add(BookModel.fromJson(book));
+        } catch (e) {
+          booksList.add(BookModel.fromJson(book));
+        }
       }
 
       return right([...booksList]);
