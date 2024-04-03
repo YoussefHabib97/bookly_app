@@ -1,13 +1,18 @@
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
-import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating_widget.dart';
 
 class BookInfoListTile extends StatelessWidget {
-  const BookInfoListTile({super.key});
+  final BookModel bookModel;
+  const BookInfoListTile({
+    super.key,
+    required this.bookModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +24,7 @@ class BookInfoListTile extends StatelessWidget {
         height: 125,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2 / 3,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(8.0),
-                  image: const DecorationImage(
-                    image: AssetImage(AssetData.testImage),
-                    alignment: Alignment.center,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
+            CustomBookTile(imgUrl: bookModel.volumeInfo.imageLinks.thumbnail),
             const SizedBox(width: 30),
             Expanded(
               child: Column(
@@ -41,7 +33,7 @@ class BookInfoListTile extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      'Harry Potter and the Goblet of Fire',
+                      bookModel.volumeInfo.title!,
                       style: Styles.textStyle20.copyWith(
                         fontFamily: kGtSectraFine,
                         fontWeight: FontWeight.w600,
@@ -51,8 +43,8 @@ class BookInfoListTile extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 3),
-                  const Text(
-                    'J.K. Rowling',
+                  Text(
+                    bookModel.volumeInfo.authors![0],
                     style: Styles.textStyle14,
                   ),
                   const SizedBox(height: 3),
@@ -60,12 +52,15 @@ class BookInfoListTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "19.99 €",
+                        "Free",
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const BookRatingWidget(),
+                      BookRatingWidget(
+                        averageRating: bookModel.volumeInfo.averageRating,
+                        ratingCount: bookModel.volumeInfo.ratingsCount,
+                      ),
                     ],
                   )
                 ],

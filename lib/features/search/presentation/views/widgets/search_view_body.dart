@@ -35,7 +35,10 @@ class SearchResultsListView extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       itemCount: 10,
       separatorBuilder: (context, index) => const Divider(),
-      itemBuilder: (context, index) => const BookInfoListTile(),
+      itemBuilder: (context, index) {
+        return Container();
+        // return const BookInfoListTile();
+      },
     );
   }
 }

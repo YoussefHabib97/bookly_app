@@ -28,7 +28,7 @@ class ApplicationRoot extends StatelessWidget {
         BlocProvider(
           create: (context) => LatestBooksCubit(
             getIt.get<HomeRepositoryImplementation>(),
-          ),
+          )..fetchLatestBooks(),
         ),
       ],
       child: MaterialApp.router(

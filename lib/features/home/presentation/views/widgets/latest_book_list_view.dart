@@ -1,4 +1,8 @@
+import 'package:bookly_app/core/widgets/custom_adaptive_loading_indicator.dart';
+import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bookly_app/features/home/presentation/manager/latest_books_cubit/latest_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_info_list_tile.dart';
 
 class LatestBooksListView extends StatelessWidget {
@@ -6,23 +10,30 @@ class LatestBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.all(16),
-          child: BookInfoListTile(),
+    return BlocBuilder<LatestBooksCubit, LatestBooksState>(
+      builder: (context, state) {
+        if (state is LatestBooksSuccess) {
+          return SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: state.books.length,
+              (context, index) => Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+                child: BookInfoListTile(
+                  bookModel: state.books[index],
+                ),
+              ),
+            ),
+          );
+        } else if (state is LatestBooksFailure) {
+          return SliverToBoxAdapter(
+            child: CustomErrorWidget(errMessage: state.errMessage),
+          );
+        }
+        return const SliverToBoxAdapter(
+          child: CustomAdaptiveLoadingIndicator(),
         );
       },
     );
-    //   ListView.builder(
-    // physics: const NeverScrollableScrollPhysics(),
-    // padding: EdgeInsets.zero,
-    // itemCount: 10,
-    // itemBuilder: (context, index) => const Padding(
-    //   padding: EdgeInsets.symmetric(vertical: 10),
-    //   child: BestSellerListTile(),
-    // ),
-    // );
   }
 }
