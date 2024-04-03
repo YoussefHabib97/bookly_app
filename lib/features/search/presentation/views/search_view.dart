@@ -13,3 +13,8 @@ class SearchView extends StatelessWidget {
     );
   }
 }
+
+// Steps to implement search correctly:
+// 1. Create SearchRepository
+// 2. Create SearchCubit
+// 3. Trigger SearchCubit
